@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\ClassType;
 use App\Models\ScheduledClass;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ScheduledClassController extends Controller
@@ -61,7 +62,9 @@ class ScheduledClassController extends Controller
     {
 
 
-        if(auth()->user()->id !==$schedule->instructor_id){
+
+
+        if(auth()->user()->cannot('delete',$schedule)){
             abort(403);
         }
 
