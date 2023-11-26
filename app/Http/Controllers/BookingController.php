@@ -12,7 +12,7 @@ class BookingController extends Controller
 
     public function create()
     {
-        $scheduledClasses = ScheduledClass::upcoming()->with('classType', 'instructor')->notBooked()->oldest()->get();
+        $scheduledClasses = ScheduledClass::upcoming()->with('classType', 'instructor')->notBooked()->oldest('date_time')->get();
 
 
 
